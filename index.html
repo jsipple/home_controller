@@ -12,32 +12,37 @@
 </head>
 <body>
 <!-- need to put navbar that should include devices, add a device, manage a device, purchase a device -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Navbar</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+<nav class="navbar navbar-expand-sm navbar-light" style="background-color: black;">
+  <a class="navbar-brand" style="color:#eace6a" href="#">SmartHome</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <div class="collapse navbar-collapse" id="navbarNavDropdown">
-    <ul class="navbar-nav">
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="#" id="home-btn">Home<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">manage devices</a>
-      </li>
-
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          departments
-        </a>
-        <section class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#">lights</a>
-          <a class="dropdown-item" href="#">temperature</a>
-          <a class="dropdown-item" href="#">Security</a>
-        </section>
-        <button>login</button>
+              <div class="btn-group">
+                  <button id="favs" type="button" class="btn btn-link">Manage your devices</button>
+                  <button id="history" type="button" class="btn btn-link">Store</button>
+                  <button id="history" type="button" class="btn btn-link">download code</button>
+                  <button type="button" id="signupmodal-btn" class="btn btn-primary mr-3" data-toggle="modal" data-target="#signupModal">
+                    Sign Up
+                        </button></span>
+                        <span id="signInModal"><button type="button" id="signinmodal-btn" class="btn btn-primary" data-toggle="modal" data-target="#signinModal">
+                    Sign In
+                        </button></span>
+                        <span id="logout"><button type="button" class="btn btn-primary mr-3" id="logoutBtn" >
+                          Logout
+                              </button></span>
+                                  <div id="Welcome"></div>
+                      </div>
+              </div>
       </li>
     </ul>
+    <button type="button" class="btn btn-default btn-lg" value="hey">
+      </button>
   </div>
 </nav>
 <!-- should be authentication -->
