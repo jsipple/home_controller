@@ -1,6 +1,6 @@
 # home_controller
 
-cd smart-home
+cd client
 
 npm i
 
