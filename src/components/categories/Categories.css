@@ -1,0 +1,29 @@
+.image {
+    position: relative;
+    height: 200px;
+    width: 250px;
+    display: inline-block;
+    padding: 20px;
+    float: left;
+    margin: 20px;
+}
+
+.category {
+    width: 250px;
+    height: 200px;
+    margin: 0;
+}
+
+.caption {
+    position: absolute;
+    width: 100%;
+    font-weight: bold;
+    color: black;
+    top: 10%;
+    line-height: 200%;
+    font-size: 18px;
+    text-align: center;
+}
+.image {
+    position: relative;
+}
