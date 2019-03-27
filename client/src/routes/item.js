@@ -1,9 +1,11 @@
 import React, { Component, Fragment } from 'react';
+import Items from '../components/items/Items';
 
 const itemRoute = () => {
     return (
       <Fragment>
-    </Fragment>
+        <Items />
+      </Fragment>
     )
   }
 
