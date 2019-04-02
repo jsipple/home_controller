@@ -1,5 +1,5 @@
 const router = require('express').Router();
-
+// might not need this file need this file idk might just me more stuff for authentiaction but as far as the routes go it's done through react
 module.exports = (db) => {
   router.get('/register', (req, res) => {
     if (req.isAuthenticated()) {

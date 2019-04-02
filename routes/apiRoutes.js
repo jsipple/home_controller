@@ -3,7 +3,7 @@ const ensureAuthenticated = require('../middlewares/ensureAuthenticated');
 
 module.exports = (passport, db) => {
   const AuthController = require('../controllers/authController')(passport, db);
-  const AppController = require('../controllers/appController')();
+  const AppController = require('../controllers/appController')(db);
 
   // Authentication
   router.post('/register', AuthController.register);
@@ -14,7 +14,13 @@ module.exports = (passport, db) => {
   router.post('/user/confirm', AuthController.confirmAuth);
 
   // App
-  router.get('/data', ensureAuthenticated, AppController.getData);
+  // router.get('/data', ensureAuthenticated, AppController.getData);
+  
+  router.post('/departments', ensureAuthenticated, AppController.addDepartments)
+  router.get('/findDepartments', ensureAuthenticated, AppController.getDepartments)
+  router.post('/items', ensureAuthenticated, AppController.addItem)
+  router.get('/department/:name', ensureAuthenticated, AppController.getItems)
+  router.get('/department/:name/:id', ensureAuthenticated, AppController.getItem)
 
   return router;
 };

@@ -1,0 +1,13 @@
+img {
+ float: left;
+ height: 200px;
+ width: 20%;
+}
+#descrip {
+ width: 70%;
+ text-align: left;
+}
+#quantity {
+ float: right;
+ width: 10%;
+}

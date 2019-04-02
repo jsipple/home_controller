@@ -4,6 +4,7 @@ import Navbar from '../components/navbar/Navbar'
 const devicesRoute = () => {
     return (
       <Fragment>
+        <Navbar />
         </Fragment>     
     )
   }

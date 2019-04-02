@@ -1,16 +1,19 @@
 module.exports = (passport, db) => {
   return {
     register: (req, res) => {
-      if (!req.body.email || !req.body.password) {
+      const {email, firstName, lastName, password} = req.body.data
+      
+      console.log('BODY ', req.body)
+      if (!email || !password) {
         return res.json({ message: 'Email and Password required!' });
       }
 
       db.User.sync().then(() => {
         const newUser = {
-          email: req.body.email,
-          password: req.body.password,
-          firstName: req.body.firstName,
-          lastName: req.body.lastName
+          email,
+          password,
+          firstName,
+          lastName
         };
 
         return db.User.create(newUser).then(() => {
@@ -31,7 +34,7 @@ module.exports = (passport, db) => {
             if (err) {
               return next(err);
             }
-            return res.status(200).json({ loggedIn: true });
+            return res.status(200).json(user);
           });
         } else {
           res.json({ loggedIn: false, error: 'Can not log in, check your user name and password!' });
@@ -40,8 +43,10 @@ module.exports = (passport, db) => {
     },
     logout: (req, res, next) => {
       req.logout();
+      console.log('LOGOUT')
       req.session.destroy((err) => {
         if (err) {
+          console.log('THERE IS AN ERR')
           return next(err);
         }
         res.clearCookie('connect.sid', { path: '/' });

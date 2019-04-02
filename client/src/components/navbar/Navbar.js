@@ -1,36 +1,114 @@
 import React, { Component,Fragment } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import './Navbar.css'
+import axios from 'axios'
+import { Button, Modal } from 'react-bootstrap';
+import Login from './Modal'
 
 class Navbar extends Component {
     constructor(props) {
         super(props)
-    }
+        this.state = {
+          email: '',
+          password: '',
+          show: false,
+          loggedIn: false
+        };
+       }
+       componentDidMount = () => {
+        //  axios.get('/api/login', (req, res) => {
+        //    console.log('a')
+        //  })
+       }
+        handleShow = () => {
+          this.setState({ show: true });
+        };
+    
+        handleHide = () => {
+          this.setState({ show: false });
+        };
+        handleChange = (e) => {
+         e.preventDefault()
+         this.setState({
+          [e.target.name]: e.target.value
+         })
+        }
+        handleKeyPress = (e) => {
+         if (e.key === 'Enter') {
+          console.log(this.state)
+          axios.post('/api/login', {
+           data: {
+            password: this.state.password,
+            email: this.state.email
+           }
+         })
+          .then(res => {
+           console.log(res.data)
+           this.setState({
+            loggedIn: true
+           })
+           console.log(this.state)
+           this.handleHide()
+          })
+         }
+        }
+      handleSubmit = (e) => {
+       e.preventDefault()
+       console.log(this.state)
+       axios.post('/api/login', {
+         password: this.state.password,
+         email: this.state.email
+      })
+      .then(res => {
+       console.log(res.data)
+       this.setState({
+        loggedIn: true
+       })
+       this.handleHide()
+       console.log(this.state)
+      })
+     }
+     handleLogout = () => {
+      // having issues with this logout code
+      axios.get('/api/logout')
+    .then(() => {
+     this.setState({
+       email: '',
+       password: '',
+       show: false,
+       loggedIn: false
+     })
+     // this.props.history.push('/home')
+    })
+  }
     render() {
         return (
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav className="navbar navbar-expand-lg navbar-light bg-light">
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="/home">Home<span class="sr-only">(current)</span></a>
+  <div className="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul className="navbar-nav mr-auto">
+      <li className="nav-item active">
+        <a className="nav-link" href="/home">Home<span className="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="/department">store<span class="sr-only">(current)</span></a>
+      <li className="nav-item active">
+        <a className="nav-link" href="/department">store<span className="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="/devices">Manage your devices<span class="sr-only">(current)</span></a>
+      <li className="nav-item active">
+        <a className="nav-link" href="/devices">Manage your devices<span className="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="/tutorial">Getting started<span class="sr-only">(current)</span></a>
+      <li className="nav-item active">
+        <a className="nav-link" href="/tutorial">Getting started<span className="sr-only">(current)</span></a>
+      </li>
+      <li className="nav-item active">
+        <a className="nav-link" href="/createDepartment">Create Department<span className="sr-only">(current)</span></a>
       </li>
     </ul>
-    <button class='btn btn-primary m-2'>login</button>
-    <button class='btn btn-primary m-2'>sign up</button>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    <a className="nav-link" href="/register">register<span className="sr-only">(current)</span></a>
+        <Login />
+    <form className="form-inline my-2 my-lg-0">
+      <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
+      <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
   </div>
 </nav>
