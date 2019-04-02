@@ -23,11 +23,10 @@ class App extends Component {
           <Route path='/tutorial' component={tutorialRoute} /> 
           {/* this will be under profile and item as well */}
           <Route path='/return' component={returnRoute} /> 
-          <Route path='/department' component={departmentRoute}> 
+          <Route exact path='/department' component={departmentRoute} /> 
             {/* this seems to break the /department think the way to do this is relative routing but not really sure how to ask about it*/}
-            <Route path='/department/:name' component={itemRoute} /> 
-            <Route path='/department/:name/:id' component={singleItemRoute} />
-          </Route>
+          <Route exact path='/department/:name' component={itemRoute} /> 
+          <Route exact path='/department/:name/:id' component={singleItemRoute} />
           <Route path='/register' component={registerRoute} /> 
           <Route path='/profile' component={profileRoute} /> 
           <Route path='/createDepartment' component={createDepartmentRoute} />
