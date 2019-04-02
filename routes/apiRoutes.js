@@ -21,6 +21,7 @@ module.exports = (passport, db) => {
   router.post('/items', ensureAuthenticated, AppController.addItem)
   router.get('/department/:name', ensureAuthenticated, AppController.getItems)
   router.get('/department/:name/:id', ensureAuthenticated, AppController.getItem)
+  
 
   return router;
 };

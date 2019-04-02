@@ -1,13 +1,29 @@
 img {
  float: left;
  height: 200px;
- width: 20%;
+ margin-left: 5%;
 }
 #descrip {
- width: 70%;
  text-align: left;
+ margin: 0;
+}
+#blerb {
+ text-indent: 5%;
+}
+#itemdesc {
+ display: inline-block;
+ height: 100%;
+ width: 100vw
 }
 #quantity {
  float: right;
- width: 10%;
+ padding: 5%;
+ border: 1px solid lightgray;
+ height: 200px;
+}
+#add {
+ width: 125px;
+ margin: 0;
+ margin-top: 10px;
+ padding: 5px;
 }

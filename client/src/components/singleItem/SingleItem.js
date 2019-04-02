@@ -2,6 +2,9 @@ import React, { Component,Fragment } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import './SingleItem.css'
 import axios from 'axios'
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
 
 class SingleItem extends Component {
  constructor(props) {
@@ -57,26 +60,32 @@ class SingleItem extends Component {
      name: result.itemName,
      description: result.itemDesc,
      seller: result.seller,
-     id: result.id
+     id: result.id,
+     totalPrice: result.itemPrice
     })
    })
  }
  render() {
   return (
    <Fragment>
-    <div>
-     <h1>{this.state.name}</h1>
-     <br />
-     <p>by {this.state.seller}</p>
-     <hr />
-     <h2>${this.state.price}</h2>
-     <img src={this.state.image} />
-     </div>
-     <hr />
-     <div id='descrip'>
-     <p>{this.state.description}</p>
-     <div id='quantity'>
-     <h3>Quantity</h3>
+       <h2>{this.state.name}</h2>
+       <p>by {this.state.seller}</p>
+      <hr />
+    <Container>
+    <Row>
+       <Col xs={3} id='itemdesc'>
+       <img src={this.state.image} />
+       </Col>
+       <Col xs={6 }>
+     <section id='descrip'>
+      <h3>Description and Features</h3>
+      <p id='blerb'>{this.state.description}</p>
+     </section>
+     </Col>
+     <Col xs={3}>
+     <section id='quantity'>
+      <p id='price'>Total Price: ${this.state.totalPrice}</p>
+      <h3>Quantity</h3>
      <select name='quantity' value={this.state.quantity} onChange={this.handleChange}>
       <option value={1}>1</option>
       <option value={2}>2</option>
@@ -85,11 +94,16 @@ class SingleItem extends Component {
       <option value={5}>5</option>
      </select>
      <br />
-     <button onClick={this.handleClick}>purchase</button>
+     <button id='add' className='btn btn-primary' onClick={this.handleClick}>Add to Cart</button>
      <br />
-     <p>Total Price: {this.state.totalPrice}</p>
-     </div>
-     </div>
+     </section>
+     </Col>
+     </Row>
+     </Container>
+<hr />
+<div>
+ <h3>Reviews</h3>
+</div>
    </Fragment>
   )
  }
