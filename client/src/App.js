@@ -7,22 +7,30 @@ import devicesRoute from './routes/devices'
 import tutorialRoute from './routes/tutorial'
 import itemRoute from './routes/item'
 import returnRoute from './routes/return'
-import Navbar from './components/navbar/Navbar'
-
+import registerRoute from './routes/register'
+import profileRoute from './routes/profile'
+import singleItemRoute from './routes/singleItem'
+import createDepartmentRoute from './routes/createDepartment'
 
 class App extends Component {
   render() {
+    console.log('PROPS APP JS ', this.props)
     return (
       <div className="App">
-      <Navbar />
         <BrowserRouter>
           <Route path='/home' component={homeRoute} />
           <Route path='/devices' component={devicesRoute} /> 
           <Route path='/tutorial' component={tutorialRoute} /> 
           {/* this will be under profile and item as well */}
           <Route path='/return' component={returnRoute} /> 
-          <Route path='/department' component={departmentRoute} /> 
-          <Route path='/department/item' component={itemRoute} /> 
+          <Route exact path='/department' component={departmentRoute} /> 
+            {/* this seems to break the /department think the way to do this is relative routing but not really sure how to ask about it*/}
+          <Route exact path='/department/:name' component={itemRoute} /> 
+          <Route exact path='/department/:name/:id' component={singleItemRoute} />
+          <Route path='/register' component={registerRoute} /> 
+          <Route path='/profile' component={profileRoute} /> 
+          <Route path='/createDepartment' component={createDepartmentRoute} />
+          {/* this will handle indvidual departments will need to have one with item after that */}
         </BrowserRouter>
       </div>
     );

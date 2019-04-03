@@ -1,15 +1,14 @@
 import React, { Component, Fragment } from 'react';
-import Tutorial from '../components/Tutorial/Tutorial';
 import Navbar from '../components/navbar/Navbar'
+import Profile from '../components/profile/Profile';
 
-
-const tutorialRoute = () => {
+const profileRoute = () => {
     return (
       <Fragment>
         <Navbar />
-        <Tutorial />
+        <Profile />
       </Fragment>
     )
   }
 
-  export default tutorialRoute
+  export default profileRoute
