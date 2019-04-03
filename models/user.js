@@ -63,5 +63,18 @@ module.exports = function (sequelize, DataTypes) {
     return values;
   };
 
+  User.associate = (models) => {
+    User.hasMany(models.Cart, {
+      onDelete: "cascade"
+    });
+  };
+
+  User.associate = (models) => {
+    User.hasMany(models.OrderHistory, {
+      onDelete: "cascade"
+    });
+  };
+
+
   return User;
 };

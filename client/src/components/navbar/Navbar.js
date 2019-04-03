@@ -12,7 +12,9 @@ class Navbar extends Component {
           email: '',
           password: '',
           show: false,
-          loggedIn: false
+
+          loggedIn: false,
+          searched: '',
         };
        }
        componentDidMount = () => {
@@ -80,7 +82,26 @@ class Navbar extends Component {
      })
      // this.props.history.push('/home')
     })
-  }
+
+    };
+
+    searchOnChange = (e) => {
+      e.preventDefault();
+      this.setState({ searched: e.target.value });
+      console.log(this.state.searched);
+    };
+    searchOnSubmit = (e) => {
+      e.preventDefault();
+      axios.post('/items/:searched?', {
+        data: {
+          itemName: this.state.searched,
+        }
+      }).then(res => {
+        console.log(res.data);
+      });
+    };
+
+
     render() {
         return (
 
@@ -106,8 +127,9 @@ class Navbar extends Component {
     </ul>
     <a className="nav-link" href="/register">register<span className="sr-only">(current)</span></a>
         <Login />
-    <form className="form-inline my-2 my-lg-0">
-      <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
+
+    <form onSubmit= {this.searchOnSubmit} className="form-inline my-2 my-lg-0">
+      <input onChange= {this.searchOnChange} className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
       <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
   </div>
