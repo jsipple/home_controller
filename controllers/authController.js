@@ -91,6 +91,7 @@ module.exports = (passport, db) => {
       }).catch(() => {
         res.json(false);
       });
+
     },
     getCart: (req, res) => {
       db.User.findOne({

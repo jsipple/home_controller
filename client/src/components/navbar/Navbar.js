@@ -12,6 +12,7 @@ class Navbar extends Component {
           email: '',
           password: '',
           show: false,
+
           loggedIn: false,
           searched: '',
         };
@@ -81,6 +82,7 @@ class Navbar extends Component {
      })
      // this.props.history.push('/home')
     })
+
     };
 
     searchOnChange = (e) => {
@@ -98,6 +100,7 @@ class Navbar extends Component {
         console.log(res.data);
       });
     };
+
 
     render() {
         return (
@@ -124,6 +127,7 @@ class Navbar extends Component {
     </ul>
     <a className="nav-link" href="/register">register<span className="sr-only">(current)</span></a>
         <Login />
+
     <form onSubmit= {this.searchOnSubmit} className="form-inline my-2 my-lg-0">
       <input onChange= {this.searchOnChange} className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
       <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>

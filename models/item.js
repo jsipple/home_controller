@@ -1,5 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
  const Items = sequelize.define('Items', {
+
     departmentName: DataTypes.STRING,
     image: DataTypes.STRING,
     itemName: DataTypes.STRING,
@@ -20,6 +21,7 @@ module.exports = (sequelize, DataTypes) => {
       }
     });
 };
+
 
  return Items
 }

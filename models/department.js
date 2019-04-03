@@ -1,6 +1,8 @@
+
 module.exports = (sequelize, DataTypes)=> {
     let Departments = sequelize.define('Departments', {
-        department_name: DataTypes.STRING,
+        name: DataTypes.STRING,
+        image: DataTypes.STRING,
     });
 
     Departments.associate = (models) => {
@@ -11,3 +13,4 @@ module.exports = (sequelize, DataTypes)=> {
 
     return Departments;    
 };
+
