@@ -2,6 +2,9 @@ import React, { Component,Fragment } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import './Items.css'
 import axios from 'axios'
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
 
 class Items extends Component {
     constructor(props) {
@@ -10,7 +13,8 @@ class Items extends Component {
             department: [],
             item: [],
             image: [],
-            id: []
+            id: [],
+            description: []
         }
     }
     componentDidMount = () => {
@@ -22,31 +26,36 @@ class Items extends Component {
             let items = [];
             let images = [];
             let ids = [];
+            let descriptions = [];
+            console.log(res.data)
             for (let i = 0; i < res.data.length; i++) {
                 items.push(res.data[i].itemName)
                 images.push(res.data[i].image)
                 ids.push(res.data[i].id)
+                descriptions.push(res.data[i].itemDesc)
             }
             // setState not working coming back
             this.setState({
                 department: path,
                 item: items,
                 image: images,
-                id: ids
+                id: ids,
+                description: descriptions
             })
             console.log(this.state)
         })
     }
     render() { 
         // need to import object from sql this should create
-        let items = this.state.item.map( (x,i) => <section key={i} className='image'><a href={`${this.state.department}/${this.state.id[i]}`}><img className='item' src={this.state.image[i]} /></a><div className='caption'>{this.state.item[i]}</div></section>)
+        let items = this.state.item.map( (x,i) => <Row id='items' key={i} ><Col xs={3}><a href={`${this.state.department}/${this.state.id[i]}`}><img className='itemImg' src={this.state.image[i]} /></a></Col><Col xs={8}><h1>{this.state.item[i]}</h1><br /><p>{this.state.description[i].substring(0,100)}...</p></Col></Row>)
+        
         return (
             <Fragment>
-                <div>
+                <Container>
                     {/* once set up only need the line 21 */}
                     {items}
                     {/* this.state.items.map( (x, i) => <section className='image'><img className='category' src={x.image}<a href='/x.name'></a><div className='caption'>{x.name}</div>)  */}
-                </div>
+                </Container>
             </Fragment>
         )
     }

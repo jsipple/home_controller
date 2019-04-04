@@ -17,8 +17,12 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false
       }
     });
+<<<<<<< HEAD:models/item.js
   };
 
 
+=======
+};
+>>>>>>> 33520a6d411877d369e3b15c5db11e5d42e8fe95:models/Item.js
  return Items
 }

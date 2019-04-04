@@ -83,10 +83,10 @@ class Login extends Component {
       let log;
       let profile
       if (this.state.loggedIn) {
-      log = <Button variant="primary" onClick={this.handleLogout}>logout</Button>
+      log = <a id='login' onClick={this.handleLogout}>logout</a>
       profile = <a href='/profile'>Profile</a>
      } else {
-       log = <Button variant="primary" onClick={this.handleShow}>Login</Button>
+       log = <a id='login' onClick={this.handleShow}>Login</a>
       }
       return (
        <>
@@ -98,12 +98,14 @@ class Login extends Component {
           </Modal.Header>
           <Modal.Body>           
            <form>
-           <label htmlFor='email'>email:</label>
-            <input value={this.state.email} name='email' type='text' onChange={this.handleChange} onKeyPress={this.handleKeyPress} />
-          <br />
-          <label htmlFor='password'>password</label>
-            <input value={this.state.password} name='password' type='text' onChange={this.handleChange} onKeyPress={this.handleKeyPress} />
-           
+   <label id='email' htmlFor='email'>Email:</label>
+    <br />
+    <input value={this.state.email} name='email' type='text' onChange={this.handleChange} onKeyPress={this.handleKeyPress} />
+    <br />
+          <label id='pass' htmlFor='password'>Password:</label>
+    <br />
+    <input value={this.state.password} name='password' type='password' onChange={this.handleChange} onKeyPress={this.handleKeyPress} />
+   <br />
            </form>
            </Modal.Body>
           <Modal.Footer>

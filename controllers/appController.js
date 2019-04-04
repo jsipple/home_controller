@@ -33,6 +33,7 @@ module.exports = function (db) {
         db.Items.sync().then(() => {
           
           const newItem = {
+<<<<<<< HEAD
             departmentName:req.body.departmentName,
             image:req.body.image,
             itemName:req.body.itemName,
@@ -41,6 +42,16 @@ module.exports = function (db) {
             seller:req.body.seller,
             ItemSales:0,
             metaphone:metaphone(req.body.itemName)
+=======
+            departmentName,
+            image,
+            itemName,
+            itemPrice,
+            itemDesc,
+            seller,
+            itemSales,
+            meta
+>>>>>>> 33520a6d411877d369e3b15c5db11e5d42e8fe95
           }
           console.log("\n\n\n\n\n\n"+newItem.meta+ newItem.departmentName+"\n\n\n\n\n\n");
           return db.Items.create(newItem).then(() => {
@@ -84,11 +95,12 @@ module.exports = function (db) {
         let department = req.params.name
         department = department.replace("\'", '')
         console.log(department)
-        db.Items.findAll({where: {departmentName: department}}).then(result => {
+        db.Items.findAll({where: {departmentName: department}, attributes: ['image', 'itemName', 'itemPrice', 'itemDesc', 'id'] }).then(result => {
           let items = []
         for (let i = 0; i < result.length; i++) {
         items.push(result[i].dataValues)
         }
+        console.log(items)
         res.json(items)
       }).catch((err) => {
         console.log(err)
@@ -98,7 +110,7 @@ module.exports = function (db) {
     getItem: (req, res) => {
         let item = req.params.id
         console.log(item)
-        db.Items.findOne({where: {id: item}}).then(result => {
+        db.Items.findOne({where: {id: item}, attributes: ['id', 'image', 'itemName', 'itemPrice', 'itemDesc', 'seller']}).then(result => {
           res.json(result.dataValues)
         }).catch(err => {
           console.log(err)
@@ -122,7 +134,6 @@ module.exports = function (db) {
 
     },
     findItems : (req, res) => {
-      //console.log("\n\n\n\n\n"++"\n\n\n\n")
       const Op = Sequelize.Op;
       let searched= req.params.searched;
       let meta = metaphone(searched);
