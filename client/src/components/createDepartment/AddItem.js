@@ -75,8 +75,7 @@ class AddItem extends Component {
   let departments = this.state.departments.map( (x, i) => <option value={x} key={i}>{x}</option>)
   return (
    <Fragment>
-    <button onClick={this.findDepartments}>addItem</button>
-    <br />
+     <h2>Add Item</h2>
     {/* will change this so that it only show up after clicking add Item */}
     <div>Select department:
      {/* if department not chaned from first it does not show up even though it says clothing on dropdown */}
@@ -85,20 +84,21 @@ class AddItem extends Component {
     </select>
     <form onSubmit={this.handleSubmit}>
    <label htmlFor='itemName'>itemName:</label>
-    <input value={this.state.itemName} name='itemName' type='text' onChange={this.handleChange} onKeyPress={this.handleKeyPress} />
+    <input id='item' value={this.state.itemName} name='itemName' type='text' onChange={this.handleChange} onKeyPress={this.handleKeyPress} />
     <br />
    <label htmlFor='image'>image</label>
-    <input value={this.state.image} name='image' type='text' onChange={this.handleChange} onKeyPress={this.handleKeyPress} />
+    <input id='image' value={this.state.image} name='image' type='text' onChange={this.handleChange} onKeyPress={this.handleKeyPress} />
     <br />
    <label htmlFor='itemPrice'>itemPrice:</label>
-    <input value={this.state.itemPrice} name='itemPrice' type='text' onChange={this.handleChange} onKeyPress={this.handleKeyPress} />
+    <input id='price' value={this.state.itemPrice} name='itemPrice' type='text' onChange={this.handleChange} onKeyPress={this.handleKeyPress} />
     <br />
    <label htmlFor='itemDesc'>item Description:</label>
-    <input value={this.state.itemDesc} name='itemDesc' type='text' onChange={this.handleChange} onKeyPress={this.handleKeyPress} />
+    <input id='desc' value={this.state.itemDesc} name='itemDesc' type='text' onChange={this.handleChange} onKeyPress={this.handleKeyPress} />
    <br />
    <label htmlFor='seller'>seller:</label>
-    <input value={this.state.seller} name='seller' type='text' onChange={this.handleChange} onKeyPress={this.handleKeyPress} />
-   <button onClick={this.handleSubmit}>submit</button>
+    <input id='seller' value={this.state.seller} name='seller' type='text' onChange={this.handleChange} onKeyPress={this.handleKeyPress} />
+   <br />
+   <button onClick={this.handleSubmit}>Add Item</button>
    </form>
     </div>
    </Fragment>

@@ -62,6 +62,7 @@ class Navbar extends Component {
          email: this.state.email
       })
       .then(res => {
+        console.log(res.data)
        console.log(res.data)
        this.setState({
         loggedIn: true

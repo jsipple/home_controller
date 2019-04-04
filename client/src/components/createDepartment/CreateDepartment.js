@@ -19,6 +19,7 @@ class CreateDepartment extends Component {
  }
  // this will allow you to run when pressing enter
  handleKeyPress = (e) => {
+   console.log(this.state)
   if (e.key === 'Enter') {
    console.log(this.state)
    axios.post('http://localhost:5000/api/departments', {
@@ -37,15 +38,18 @@ class CreateDepartment extends Component {
  }
  render() {
  return(
-  <div className='departmentName'>
+  <div id='addDepart'>
+  <h2>Add Department</h2>
    <form onSubmit={this.handleSubmit}>
    <label htmlFor='departmentName'>departmentName:</label>
-    <input value={this.state.departmentName} name='departmentName' type='text' onChange={this.handleChange} onKeyPress={this.handleKeyPress} />
-   <label htmlFor='image'>image</label>
-    <input value={this.state.image} name='image' type='text' onChange={this.handleChange} onKeyPress={this.handleKeyPress} />
+    <input id='name' value={this.state.departmentName} name='departmentName' type='text' onChange={this.handleChange} onKeyPress={this.handleKeyPress} />
+   <br />
+   <label htmlFor='image'>image:</label>
+    <input id='image' value={this.state.image} name='image' type='text' onChange={this.handleChange} onKeyPress={this.handleKeyPress} />
    </form>
    {/* probably will just change this to handleClick but idk */}
-   <button onClick={this.handleSubmit}>Submit</button>
+   <button onClick={this.handleSubmit}>Create New Department</button>
+   <hr />
    <AddItem />
   </div>
  )

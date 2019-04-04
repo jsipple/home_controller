@@ -84,7 +84,7 @@ class SingleItem extends Component {
      </Col>
      <Col xs={3}>
      <section id='quantity'>
-      <p id='price'>Total Price: ${this.state.totalPrice}</p>
+      <p id='totalPrice'>Total Price: ${this.state.totalPrice}</p>
       <h3>Quantity</h3>
      <select name='quantity' value={this.state.quantity} onChange={this.handleChange}>
       <option value={1}>1</option>

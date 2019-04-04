@@ -38,11 +38,9 @@ module.exports = function (db) {
             itemName,
             itemPrice,
             itemDesc,
-
             seller,
             itemSales,
             meta
-
           }
           return db.Items.create(newItem).then(() => {
             res.status(200).json({message: 'Item added'})
@@ -85,11 +83,12 @@ module.exports = function (db) {
         let department = req.params.name
         department = department.replace("\'", '')
         console.log(department)
-        db.Items.findAll({where: {departmentName: department}}).then(result => {
+        db.Items.findAll({where: {departmentName: department}, attributes: ['image', 'itemName', 'itemPrice', 'itemDesc', 'id'] }).then(result => {
           let items = []
         for (let i = 0; i < result.length; i++) {
         items.push(result[i].dataValues)
         }
+        console.log(items)
         res.json(items)
       }).catch((err) => {
         console.log(err)
@@ -99,7 +98,7 @@ module.exports = function (db) {
     getItem: (req, res) => {
         let item = req.params.id
         console.log(item)
-        db.Items.findOne({where: {id: item}}).then(result => {
+        db.Items.findOne({where: {id: item}, attributes: ['id', 'image', 'itemName', 'itemPrice', 'itemDesc', 'seller']}).then(result => {
           res.json(result.dataValues)
         }).catch(err => {
           console.log(err)

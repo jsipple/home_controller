@@ -1,0 +1,29 @@
+#name {
+ margin-left: 10px;
+}
+
+#image {
+ margin-left: 100px;
+}
+input {
+ margin: 5px;
+}
+#addDepart {
+ border: 1px solid lightgray;
+ margin: 0 auto;
+ width: 400px;
+ margin-top: 20px;
+ margin-bottom: 20px;
+}
+#item {
+ margin-left: 65px;
+}
+#price {
+ margin-left: 72px;
+}
+#desc {
+ margin-left: 20px;
+}
+#seller {
+ margin-left: 100px;
+}

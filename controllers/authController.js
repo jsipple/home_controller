@@ -1,7 +1,7 @@
 module.exports = (passport, db) => {
   return {
     register: (req, res) => {
-      const {email, firstName, lastName, password} = req.body.data
+      const {email, userName, password} = req.body.data
       
       console.log('BODY ', req.body)
       if (!email || !password) {
@@ -12,8 +12,7 @@ module.exports = (passport, db) => {
         const newUser = {
           email,
           password,
-          firstName,
-          lastName
+          userName,
         };
 
         return db.User.create(newUser).then(() => {
