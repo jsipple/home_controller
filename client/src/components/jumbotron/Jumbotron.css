@@ -2,5 +2,10 @@
     background-image: url('../images/home.jpg');
     background-repeat: no-repeat;
     background-size: 100% 100%;
-    color: white;
+    color: black;
+    text-shadow: white 0px 0px 10px;
 } 
+.lead {
+    font-size: 20px;
+    font-weight: bold;
+}

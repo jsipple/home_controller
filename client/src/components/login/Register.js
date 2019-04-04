@@ -2,13 +2,13 @@ import React, { Component,Fragment } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import './Register.css'
 import axios from 'axios'
+import Login from '../navbar/Modal'
 
 class Register extends Component {
  constructor(props) {
   super(props)
   this.state = {
-   firstName: 'aoeu',
-   lastName: 'joe',
+   userName: '',
    password: '',
    email: ''
   }
@@ -39,16 +39,28 @@ class Register extends Component {
  render() {
  return(
   <div className='login'>
+  <h2>Create Account</h2>
    <form onSubmit={this.handleSubmit}>
-   <label htmlFor='userName'>Username:</label>
-    <input value={this.state.userName} name='userName' type='text' onChange={this.handleChange} onKeyPress={this.handleKeyPress} />
-   <label htmlFor='password'>password</label>
-    <input value={this.state.password} name='password' type='text' onChange={this.handleChange} onKeyPress={this.handleKeyPress} />
-   <label htmlFor='email'>email:</label>
+   <label id='email' htmlFor='email'>Email:</label>
+    <br />
     <input value={this.state.email} name='email' type='text' onChange={this.handleChange} onKeyPress={this.handleKeyPress} />
+    <br />
+   <label id='user' htmlFor='userName'>Username:</label>
+    <br />
+    <input value={this.state.userName} name='userName' type='text' onChange={this.handleChange} onKeyPress={this.handleKeyPress} />
+   <br />
+   <label id='pass' htmlFor='password'>Password:</label>
+    <br />
+    <input value={this.state.password} name='password' type='password' onChange={this.handleChange} onKeyPress={this.handleKeyPress} />
+   <br />
+    <button className='btn btn-primary' onClick={this.handleSubmit}>Create Your Account</button>
+   
    </form>
+   <hr />
+   <div>
+     <p>Already have an account?<Login /> </p>
+   </div>
    {/* probably will just change this to handleClick but idk */}
-   <button onClick={this.handleSubmit}>Submit</button>
   </div>
  )
  }

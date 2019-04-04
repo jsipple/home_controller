@@ -1,0 +1,8 @@
+#items {
+ text-align: left;
+ border-bottom: 1px solid lightgray;
+ width: 100%;
+}
+.itemImg {
+ width: 100%;
+}

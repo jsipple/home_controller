@@ -2,6 +2,7 @@ img {
  float: left;
  height: 200px;
  margin-left: 5%;
+ width: 100%;
 }
 #descrip {
  text-align: left;
@@ -20,9 +21,11 @@ img {
  padding: 5%;
  border: 1px solid lightgray;
  height: 200px;
+ width: 100%;
 }
+/* this is not working */
 #add {
- width: 125px;
+ width: 100px;
  margin: 0;
  margin-top: 10px;
  padding: 5px;
