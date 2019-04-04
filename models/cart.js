@@ -11,6 +11,14 @@ module.exports = (sequelize, DataTypes) => {
         total: {
             type:DataTypes.INTEGER,
             percision: 2, 
+        },
+        email: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            unique: {
+              args: true,
+              msg: 'User already exists'
+            }
         }
     });
   
