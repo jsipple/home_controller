@@ -113,7 +113,7 @@ class Navbar extends Component {
         <a className="nav-link" href="/department">store<span className="sr-only">(current)</span></a>
       </li>
       <li className="nav-item active">
-        <a className="nav-link" href="/devices">Manage your devices<span className="sr-only">(current)</span></a>
+        <a className="nav-link" href="https://home-controller12345.herokuapp.com/">Manage your devices<span className="sr-only">(current)</span></a>
       </li>
       <li className="nav-item active">
         <a className="nav-link" href="/tutorial">Getting started<span className="sr-only">(current)</span></a>
