@@ -90,31 +90,6 @@ module.exports = (passport, db) => {
       }).catch(() => {
         res.json(false);
       });
-
-    },
-    getCart: (req, res) => {
-      db.User.findOne({
-        where: { id: req.params.id },
-        include: [db.Cart]
-      }).then((user) => {
-        if(!user){
-          console.log('you need to signed in to see your cart');
-        }else{
-          console.log(res.json());
-        };
-      });
-    },
-    getOrderHistory : (req, res) => {
-      db.User.findOne({
-        where: { id: req.params.id },
-        include: [db.OrderHistory]
-      }).then((user) => {
-        if(!user){
-          console.log('you need to signed in to see your order history');
-        }else{
-          console.log(res.json());
-        };
-      }); 
     }
   };
 };

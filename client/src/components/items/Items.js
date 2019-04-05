@@ -43,7 +43,7 @@ class Items extends Component {
                 description: descriptions
             })
             console.log(this.state)
-        })
+        });
     }
     render() { 
         // need to import object from sql this should create

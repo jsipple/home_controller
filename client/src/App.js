@@ -11,6 +11,8 @@ import registerRoute from './routes/register'
 import profileRoute from './routes/profile'
 import singleItemRoute from './routes/singleItem'
 import createDepartmentRoute from './routes/createDepartment'
+import cartRoute from './routes/cartDisplay'
+import orderHistoryRoute from './routes/orderHistoryDisplay'
 
 class App extends Component {
   render() {
@@ -30,6 +32,9 @@ class App extends Component {
           <Route path='/register' component={registerRoute} /> 
           <Route path='/profile' component={profileRoute} /> 
           <Route path='/createDepartment' component={createDepartmentRoute} />
+          <Route path='/findItems/:searched' component={itemRoute}/>
+          <Route path= '/cart/:email' component={cartRoute}/>
+          <Route path= '/orderHistory/:email' component={orderHistoryRoute}/>
           {/* this will handle indvidual departments will need to have one with item after that */}
         </BrowserRouter>
       </div>

@@ -4,22 +4,19 @@ module.exports = (sequelize, DataTypes) => {
     departmentName: DataTypes.STRING,
     image: DataTypes.STRING,
     itemName: DataTypes.STRING,
-    itemPrice: {     
-        type: DataTypes.DECIMAL,
-        precision: 2,
-    },
+    itemPrice: DataTypes.DECIMAL,
     itemDesc: DataTypes.TEXT,
     seller: DataTypes.STRING,
     ItemSales: DataTypes.INTEGER,
     metaphone: DataTypes.STRING
  });
 
-    Items.associate = (models) => {
+  Items.associate = (models) => {
     Items.belongsTo(models.Departments, {
       foreignKey: {
         allowNull: false
       }
     });
-};
+  };
  return Items
 }
