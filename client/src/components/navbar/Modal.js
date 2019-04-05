@@ -64,10 +64,10 @@ class Login extends Component {
 
 
      render() {
-      let profile;
+      // let profile;
       let log;
       if (this.state.loggedIn) {
-      profile = <Link to='/profile'>Profile</Link>
+      // profile = <Link to='/profile'>Profile</Link>
      } else {
        log = <button id='login' onClick={this.handleShow}>Login</button>
       }
