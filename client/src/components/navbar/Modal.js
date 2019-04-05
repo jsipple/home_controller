@@ -56,9 +56,6 @@ class Login extends Component {
      })
      .then(res => {
       console.log(res.data)
-      this.setState({
-       loggedIn: true
-      })
       this.handleHide()
       this.props.login(true, res.data.userName, res.data.isAdmin)
       console.log(this.state)
@@ -67,18 +64,16 @@ class Login extends Component {
 
 
      render() {
+      let profile;
       let log;
-      let profile
       if (this.state.loggedIn) {
-      log = <a id='login' onClick={this.handleLogout}>logout</a>
       profile = <Link to='/profile'>Profile</Link>
      } else {
-       log = <a id='login' onClick={this.handleShow}>Login</a>
+       log = <button id='login' onClick={this.handleShow}>Login</button>
       }
       return (
        <>
         {log}
-        {profile}
         <Modal show={this.state.show} onHide={this.handleHide}>
           <Modal.Header closeButton>
             <Modal.Title>Login</Modal.Title>
