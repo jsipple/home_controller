@@ -7,19 +7,57 @@ import devicesRoute from './routes/devices'
 import tutorialRoute from './routes/tutorial'
 import itemRoute from './routes/item'
 import returnRoute from './routes/return'
-import registerRoute from './routes/register'
 import profileRoute from './routes/profile'
 import singleItemRoute from './routes/singleItem'
 import createDepartmentRoute from './routes/createDepartment'
+
+import axios from 'axios'
+import Navbar from './components/navbar/Navbar'
+
 import cartRoute from './routes/cartDisplay'
 import orderHistoryRoute from './routes/orderHistoryDisplay'
 
+
 class App extends Component {
+  state = {
+    isAuth: false,
+    isAdmin: false
+  }
+
+  componentDidMount() {
+    // whenever redirect seem to reset the state of authenticatior
+  // window.location.pathname = '/home'
+  }
+
+  // login
+
+  // logout
+  handleLogout = () => {
+    // having issues with this logout code
+    axios.get('/api/logout')
+  .then(() => {
+   this.setState({
+     email: '',
+     password: '',
+     show: false,
+     isAuth: false
+   })
+   // this.props.history.push('/home')
+  })
+   }
+  // checkAuth
+
   render() {
+    console.log(this.props.admin)
     console.log('PROPS APP JS ', this.props)
+    let adminRoute;
+    if (this.props.admin) {
+      adminRoute = <Route path='/createDepartment' component={createDepartmentRoute} />
+    }
     return (
       <div className="App">
         <BrowserRouter>
+        <Navbar admin={this.props.admin} />
           <Route path='/home' component={homeRoute} />
           <Route path='/devices' component={devicesRoute} /> 
           <Route path='/tutorial' component={tutorialRoute} /> 
@@ -29,12 +67,17 @@ class App extends Component {
             {/* this seems to break the /department think the way to do this is relative routing but not really sure how to ask about it*/}
           <Route exact path='/department/:name' component={itemRoute} /> 
           <Route exact path='/department/:name/:id' component={singleItemRoute} />
+
+          <Route user={this.props.user} path='/profile' component={profileRoute} /> 
+          {adminRoute}
+
           <Route path='/register' component={registerRoute} /> 
           <Route path='/profile' component={profileRoute} /> 
           <Route path='/createDepartment' component={createDepartmentRoute} />
           <Route path='/findItems/:searched' component={itemRoute}/>
           <Route path= '/cart/:email' component={cartRoute}/>
           <Route path= '/orderHistory/:email' component={orderHistoryRoute}/>
+
           {/* this will handle indvidual departments will need to have one with item after that */}
         </BrowserRouter>
       </div>

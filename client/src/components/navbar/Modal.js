@@ -15,11 +15,6 @@ class Login extends Component {
          loggedIn: false
        };
       }
-      componentDidMount = () => {
-        if (localStorage.getItem('jwtToken')) {
-          console.log(JSON.stringify(localStorage.jwtToken))
-        }
-      }
        handleShow = () => {
          this.setState({ show: true });
        };
@@ -36,17 +31,18 @@ class Login extends Component {
        handleKeyPress = (e) => {
         if (e.key === 'Enter') {
          axios.post('/api/login', {
-          data: {
            password: this.state.password,
            email: this.state.email
-          }
         })
          .then(res => {
-           const token = res.data
            console.log(res.data)
-           localStorage.clear()
-          localStorage.setItem('jwtToken', this.state)
+           this.setState({
+             isAuth: true,
+             isAdmin: res.data.isAdmin
+           })
           this.handleHide()
+  
+          this.props.handleLoginMiddle(true, res.data.userName, res.data.isAdmin)
          })
         }
        }
@@ -62,29 +58,18 @@ class Login extends Component {
        loggedIn: true
       })
       this.handleHide()
+      this.props.login(true, res.data.userName, res.data.isAdmin)
       console.log(this.state)
      })
     }
-    handleLogout = () => {
-     // having issues with this logout code
-     axios.get('/api/logout')
-   .then(() => {
-    this.setState({
-      email: '',
-      password: '',
-      show: false,
-      loggedIn: false
-    })
-    // this.props.history.push('/home')
-   })
-    }
+
 
      render() {
       let log;
       let profile
       if (this.state.loggedIn) {
       log = <a id='login' onClick={this.handleLogout}>logout</a>
-      profile = <a href='/profile'>Profile</a>
+      profile = <Link to='/profile'>Profile</Link>
      } else {
        log = <a id='login' onClick={this.handleShow}>Login</a>
       }

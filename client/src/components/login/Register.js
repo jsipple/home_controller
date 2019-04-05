@@ -13,8 +13,14 @@ class Register extends Component {
    email: ''
   }
  }
+
+handleLoginMiddle = (one, two, three) => {
+  this.props.login(one, two, three)
+}
+
  handleSubmit = (e) => {
   e.preventDefault()
+
   // this is not running on enter right now
   // this is where i need to ping the server to check if true etc
  }
@@ -27,6 +33,7 @@ class Register extends Component {
   })
    .then(res => {
     console.log(res.data)
+    this.props.login({ isAuth: true, user: res.data })
    })
   }
  }
@@ -58,7 +65,7 @@ class Register extends Component {
    </form>
    <hr />
    <div>
-     <p>Already have an account?<Login /> </p>
+     <p>Already have an account?<Login login={this.handleLoginMiddle} /> </p>
    </div>
    {/* probably will just change this to handleClick but idk */}
   </div>
