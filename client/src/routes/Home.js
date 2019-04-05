@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Fragment } from 'react';
 import Categories from '../components/categories/Categories'
 import Jumbotron from '../components/jumbotron/Jumbotron';
 
