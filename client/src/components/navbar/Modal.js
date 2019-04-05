@@ -69,7 +69,7 @@ class Login extends Component {
       let profile
       if (this.state.loggedIn) {
       log = <a id='login' onClick={this.handleLogout}>logout</a>
-      profile = <a href='/profile'>Profile</a>
+      profile = <Link to='/profile'>Profile</Link>
      } else {
        log = <a id='login' onClick={this.handleShow}>Login</a>
       }

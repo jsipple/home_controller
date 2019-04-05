@@ -2,7 +2,7 @@ import React, { Component,Fragment } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import './Navbar.css'
 import axios from 'axios'
-import { Link, Router } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 class Navbar extends Component {
     constructor(props) {
@@ -143,7 +143,7 @@ class Navbar extends Component {
           {adminButton}
     </ul>
     <Link className="nav-link" to="/register">register<span className="sr-only">(current)</span></Link>
-        <a href='/home' onClick={this.handleLogout}>Logout</a>
+        <Link to='/home' onClick={this.handleLogout}>Logout</Link>
 
     <form onSubmit= {this.searchOnSubmit} className="form-inline my-2 my-lg-0">
       <input onChange= {this.searchOnChange} className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
