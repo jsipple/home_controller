@@ -6,6 +6,8 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 
+
+
 class SingleItem extends Component {
  constructor(props) {
   super(props)
@@ -18,21 +20,23 @@ class SingleItem extends Component {
    name: '',
    description: '',
    seller: '',
-   id: ''
+   id: '',
   }
+  console.log(props.email)
  }
  // might want to check with Sarah not sure if she's done anything on the cart stuff yet
  handleClick = () => {
-  axios.post('/api/', {
-   data: {
+  axios.post('/api/cart', {
+    image:this.state.image,
     quantity: this.state.quantity,
-    totalPrice: this.state.price,
-    id: this.state.id,
-    name: this.state.name
-   }
+    itemPrice: this.state.price,
+    total: this.state.totalPrice,
+    itemName: this.state.name,
+    email:this.state.email,
   })
   .then(res => {
-   res.redirect('/')
+    console.log(res.data)
+   //res.redirect('/')
   })
  }
  handleChange = (e) => {

@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
     let Cart = sequelize.define('Cart', {
-        departmentName: DataTypes.STRING,
+        //departmentName: DataTypes.STRING,
         image: DataTypes.STRING,
         itemName: DataTypes.STRING,
         itemPrice: {     
@@ -12,23 +12,17 @@ module.exports = (sequelize, DataTypes) => {
             type:DataTypes.INTEGER,
             percision: 2, 
         },
-        email: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            unique: {
-              args: true,
-              msg: 'User already exists'
-            }
-        }
-    });
-  
-    Cart.associate = (models) => {
-        Cart.belongsTo(models.User, {
-          foreignKey: {
-            allowNull: false
-          }
-        });
-    };
+        email: DataTypes.STRING,
+        
+    }, {timestamps: false});
+
+    // Cart.associate = (models) => {
+    //     Cart.belongsTo(models.User, {
+    //       foreignKey: {
+    //         allowNull: false
+    //       }
+    //     });
+    // };
 
     return Cart;
 };

@@ -33,7 +33,6 @@ module.exports = function (db) {
         db.Items.sync().then(() => {
           
           const newItem = {
-<<<<<<< HEAD
             departmentName:req.body.departmentName,
             image:req.body.image,
             itemName:req.body.itemName,
@@ -42,16 +41,6 @@ module.exports = function (db) {
             seller:req.body.seller,
             ItemSales:0,
             metaphone:metaphone(req.body.itemName)
-=======
-            departmentName,
-            image,
-            itemName,
-            itemPrice,
-            itemDesc,
-            seller,
-            itemSales,
-            meta
->>>>>>> 33520a6d411877d369e3b15c5db11e5d42e8fe95
           }
           console.log("\n\n\n\n\n\n"+newItem.meta+ newItem.departmentName+"\n\n\n\n\n\n");
           return db.Items.create(newItem).then(() => {
@@ -169,7 +158,68 @@ module.exports = function (db) {
         console.log(err);
       });
 
-    }
+    },
+    getCart: (req, res) => {
+      let email= req.params.email;
+      db.Cart.findAll({
+        where: { email: email},
+      }).then((cart) => {
+        console.log(res.json(cart));
+      });
+    },
+
+    addCart: (req, res) => {
+      let cart= req.body;
+      db.Cart.sync().then(() => {
+        const newCart = {
+          departmentName: cart.departmentName,
+          image: cart.image,
+          itemName: cart.itemName,
+          itemPrice: cart.itemPrice,
+          quantity: cart.quantity,
+          total: cart.total,
+          email: cart.email
+        }
+        console.log(newCart+ "\n\n\n\n")
+        return db.Cart.create(newCart).then(() => {
+          res.status(200).json({message: 'Cart item added'})
+        })
+      }).catch((err) => {
+        console.log(err)
+        res.status(403)
+      })
+    },
+
+    getOrderHistory : (req, res) => {
+      let email= req.params.email;
+      db.OrderHistory.findAll({
+        where: { email: email },
+      }).then((orderHistory) => {
+        console.log(res.json(orderHistory));
+      }); 
+    },
+
+    addOrderHistory: (req, res) => {
+      let order= req.body;
+      db.OrderHistory.sync().then(() => {
+        const newOrder = {
+          departmentName: order.departmentName,
+          image: order.image,
+          itemName: order.itemName,
+          itemPrice: order.itemPrice,
+          quantity: order.quantity,
+          total: order.total,
+          email: order.email
+        }
+        console.log(newOrder+ "\n\n\n\n")
+        return db.OrderHistory.create(newOrder).then(() => {
+          res.status(200).json({message: 'Order history item added'})
+        })
+      }).catch((err) => {
+        console.log(err)
+        res.status(403)
+      })
+    },
   };
 
 };
