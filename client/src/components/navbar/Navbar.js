@@ -87,15 +87,11 @@ class Navbar extends Component {
     searchOnChange = (e) => {
       e.preventDefault();
       this.setState({ searched: e.target.value });
-      console.log(this.state.searched);
     };
     searchOnSubmit = (e) => {
       e.preventDefault();
-      axios.post('/items/:searched?', {
-        data: {
-          itemName: this.state.searched,
-        }
-      }).then(res => {
+      axios.get('/api/findItems/'+ this.state.searched
+      ).then(res => {
         console.log(res.data);
       });
     };

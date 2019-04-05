@@ -10,8 +10,13 @@ import returnRoute from './routes/return'
 import profileRoute from './routes/profile'
 import singleItemRoute from './routes/singleItem'
 import createDepartmentRoute from './routes/createDepartment'
+
 import axios from 'axios'
 import Navbar from './components/navbar/Navbar'
+
+import cartRoute from './routes/cartDisplay'
+import orderHistoryRoute from './routes/orderHistoryDisplay'
+
 
 class App extends Component {
   state = {
@@ -62,8 +67,17 @@ class App extends Component {
             {/* this seems to break the /department think the way to do this is relative routing but not really sure how to ask about it*/}
           <Route exact path='/department/:name' component={itemRoute} /> 
           <Route exact path='/department/:name/:id' component={singleItemRoute} />
+
           <Route user={this.props.user} path='/profile' component={profileRoute} /> 
           {adminRoute}
+
+          <Route path='/register' component={registerRoute} /> 
+          <Route path='/profile' component={profileRoute} /> 
+          <Route path='/createDepartment' component={createDepartmentRoute} />
+          <Route path='/findItems/:searched' component={itemRoute}/>
+          <Route path= '/cart/:email' component={cartRoute}/>
+          <Route path= '/orderHistory/:email' component={orderHistoryRoute}/>
+
           {/* this will handle indvidual departments will need to have one with item after that */}
         </BrowserRouter>
       </div>

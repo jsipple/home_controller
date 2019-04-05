@@ -24,24 +24,25 @@ module.exports = function (db) {
     },
     // adding twice for some reason
       addItem: (req, res) => {
-
-        const {departmentName, image, itemName, itemPrice, itemDesc, seller} = req.body.data;
-        const meta = metaphone(itemName);
-        const itemSales = 0;
+        console.log(req.body)
+        //const {departmentName, image, itemName, itemPrice, itemDesc, seller} = req.body.data;
+        
 
         // db is coming back as undefined need to figure out why
-        console.log(db)
+        //console.log(db)
         db.Items.sync().then(() => {
+          
           const newItem = {
-            departmentName,
-            image,
-            itemName,
-            itemPrice,
-            itemDesc,
-            seller,
-            itemSales,
-            meta
+            departmentName:req.body.departmentName,
+            image:req.body.image,
+            itemName:req.body.itemName,
+            itemPrice:req.body.itemPrice,
+            itemDesc:req.body.itemDesc,
+            seller:req.body.seller,
+            ItemSales:0,
+            metaphone:metaphone(req.body.itemName)
           }
+          console.log("\n\n\n\n\n\n"+newItem.meta+ newItem.departmentName+"\n\n\n\n\n\n");
           return db.Items.create(newItem).then(() => {
             res.status(200).json({message: 'Item added'})
           })
@@ -121,22 +122,24 @@ module.exports = function (db) {
       })
 
     },
-    searchItems : (req, res) => {
-      let searched = req.params.searched;
+    findItems : (req, res) => {
       const Op = Sequelize.Op;
+      let searched= req.params.searched;
       let meta = metaphone(searched);
-      db.Items.findAll({
+      return db.Items.findAll({
+        attribute:['itemName'],
         where: {
           metaphone: {
-              [Op.like]: meta+"%"
+            [Op.like]: meta+"%"
           }
         },
-        include: [db.Departments]
+        //include: [db.Departments]
       }).then(result => {
         let items = []
         for (let i = 0; i < result.length; i++) {
-          items.push(result[i].dataValues)
+        items.push(result[i].dataValues)
         }
+        console.log(items)
         res.json(items)
       }).catch((err) => {
         console.log(err)
@@ -155,7 +158,68 @@ module.exports = function (db) {
         console.log(err);
       });
 
-    }
+    },
+    getCart: (req, res) => {
+      let email= req.params.email;
+      db.Cart.findAll({
+        where: { email: email},
+      }).then((cart) => {
+        console.log(res.json(cart));
+      });
+    },
+
+    addCart: (req, res) => {
+      let cart= req.body;
+      db.Cart.sync().then(() => {
+        const newCart = {
+          departmentName: cart.departmentName,
+          image: cart.image,
+          itemName: cart.itemName,
+          itemPrice: cart.itemPrice,
+          quantity: cart.quantity,
+          total: cart.total,
+          email: cart.email
+        }
+        console.log(newCart+ "\n\n\n\n")
+        return db.Cart.create(newCart).then(() => {
+          res.status(200).json({message: 'Cart item added'})
+        })
+      }).catch((err) => {
+        console.log(err)
+        res.status(403)
+      })
+    },
+
+    getOrderHistory : (req, res) => {
+      let email= req.params.email;
+      db.OrderHistory.findAll({
+        where: { email: email },
+      }).then((orderHistory) => {
+        console.log(res.json(orderHistory));
+      }); 
+    },
+
+    addOrderHistory: (req, res) => {
+      let order= req.body;
+      db.OrderHistory.sync().then(() => {
+        const newOrder = {
+          departmentName: order.departmentName,
+          image: order.image,
+          itemName: order.itemName,
+          itemPrice: order.itemPrice,
+          quantity: order.quantity,
+          total: order.total,
+          email: order.email
+        }
+        console.log(newOrder+ "\n\n\n\n")
+        return db.OrderHistory.create(newOrder).then(() => {
+          res.status(200).json({message: 'Order history item added'})
+        })
+      }).catch((err) => {
+        console.log(err)
+        res.status(403)
+      })
+    },
   };
 
 };

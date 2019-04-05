@@ -13,20 +13,21 @@ module.exports = (passport, db) => {
   router.delete('/user/:id', ensureAuthenticated, AuthController.deleteUser);
   router.post('/user/confirm', AuthController.confirmAuth);
 
-  router.get('/user/cart', ensureAuthenticated, AuthController.getCart);
-  router.get('/user/orderHistory', ensureAuthenticated, AuthController.getOrderHistory);
-
   // App
   // router.get('/data', ensureAuthenticated, AppController.getData);
   
   router.post('/departments', ensureAuthenticated, AppController.addDepartments)
   router.get('/findDepartments', ensureAuthenticated, AppController.getDepartments)
   router.post('/items', ensureAuthenticated, AppController.addItem)
-  //router.get('/department/:name/:id?', ensureAuthenticated, AppController.getItems)
-  router.get('/items/:searched?', AppController.searchItems)
+  router.get('/department/:name/:id?', ensureAuthenticated, AppController.getItems)
+  router.get('/findItems/:searched', AppController.findItems)
   router.put('item/:id', AppController.updateItem)
   router.get('/department/:name', ensureAuthenticated, AppController.getItems)
   router.get('/department/:name/:id', ensureAuthenticated, AppController.getItem)
+  router.get('/cart/:email', AppController.getCart)
+  router.post('/cart', AppController.addCart)
+  router.get('/orderHistory/:email', AppController.getOrderHistory)
+  router.post('/orderHistory', AppController.addOrderHistory)
  
 
   return router;

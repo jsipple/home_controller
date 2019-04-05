@@ -56,7 +56,6 @@ db.sequelize.sync({ force: process.env.FORCE_SYNC === 'true' }).then(() => {
     require('./db/seed')(db);
   }
 
-
   app.get('/api', (req,res) => {
     db.User.findAll({}).then(result => {
       res.json(result)

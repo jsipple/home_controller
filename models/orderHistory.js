@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
     let OrderHistory = sequelize.define('OrderHistory', {
-        departmentName: DataTypes.STRING,
+        //departmentName: DataTypes.STRING,
         image: DataTypes.STRING,
         itemName: DataTypes.STRING,
         itemPrice: {     
@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
             type:DataTypes.INTEGER,
             percision: 2, 
         }
-    });
+    }, {timestamps: false});
   
     OrderHistory.associate = (models) => {
         OrderHistory.belongsTo(models.User, {
