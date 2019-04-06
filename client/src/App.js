@@ -71,7 +71,6 @@ class App extends Component {
           <Route user={this.props.user} path='/profile' component={profileRoute} /> 
           {adminRoute}
 
-          {/*<Route path='/register' component={registerRoute} /> */}
           <Route path='/profile' component={profileRoute} /> 
           <Route path='/createDepartment' component={createDepartmentRoute} />
           <Route exact path='/findItems/:searched' component={itemRoute}/>

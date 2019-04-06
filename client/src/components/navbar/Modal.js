@@ -5,6 +5,8 @@ import './Navbar.css'
 import { Button, Modal } from 'react-bootstrap';
 import { Link } from 'react-router-dom'
 // import { withRouter } from 'react-router'
+import { Link } from 'react-router-dom'
+
 
 class Login extends Component {
     constructor(props) {
