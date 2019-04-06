@@ -5,6 +5,8 @@ import axios from 'axios'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
+import { Link } from 'react-router-dom'
+
 
 class Items extends Component {
     constructor(props) {
@@ -47,7 +49,7 @@ class Items extends Component {
     }
     render() { 
         // need to import object from sql this should create
-        let items = this.state.item.map( (x,i) => <Row id='items' key={i} ><Col xs={3}><Link to={`${this.state.department}/${this.state.id[i]}`}><img className='itemImg' src={this.state.image[i]} /></Link></Col><Col xs={8}><h1>{this.state.item[i]}</h1><br /><p>{this.state.description[i].substring(0,100)}...</p></Col></Row>)
+        let items = this.state.item.map( (x,i) => <Row id='items' key={i} ><Col xs={3}><Link to={`${this.state.department}/${this.state.id[i]}`}><img alt='item not found' className='itemImg' src={this.state.image[i]} /></Link></Col><Col xs={8}><h1>{this.state.item[i]}</h1><br /><p>{this.state.description[i].substring(0,100)}...</p></Col></Row>)
         
         return (
             <Fragment>

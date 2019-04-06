@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import './App.css';
 import { BrowserRouter, Route } from 'react-router-dom'
 import homeRoute from './routes/Home'
@@ -71,7 +71,6 @@ class App extends Component {
           <Route user={this.props.user} path='/profile' component={profileRoute} /> 
           {adminRoute}
 
-          <Route path='/register' component={registerRoute} /> 
           <Route path='/profile' component={profileRoute} /> 
           <Route path='/createDepartment' component={createDepartmentRoute} />
           <Route path='/findItems/:searched' component={itemRoute}/>

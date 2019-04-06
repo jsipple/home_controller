@@ -10,7 +10,7 @@ const passport = require('passport');
 const moment = require('moment');
 const helmet = require('helmet');
 // need to have both of these running at once
-const PORT = process.argv[2] || process.env.PORT || 5000;
+const PORT = process.env.PORT || 5000;
 const app = express();
 const cors = require('cors')
 const bodyParser = require('body-parser')
