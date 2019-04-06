@@ -147,8 +147,7 @@ class Navbar extends Component {
       </li>
           {adminButton}
     </ul>
-    <Link className="nav-link" to="/register">register<span className="sr-only">(current)</span></Link>
-        <Link to='/home' onClick={this.handleLogout}>Logout</Link>
+        <a href='/home' onClick={this.handleLogout}>Logout</a>
 
     <form onSubmit= {this.searchOnSubmit} className="form-inline my-2 my-lg-0">
       <input onChange= {this.searchOnChange} className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
