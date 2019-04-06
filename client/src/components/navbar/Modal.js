@@ -69,7 +69,7 @@ class Login extends Component {
       if (this.state.loggedIn) {
       // profile = <Link to='/profile'>Profile</Link>
      } else {
-       log = <button id='login' onClick={this.handleShow}>Login</button>
+       log = <button id='login' className='btn btn-primary' onClick={this.handleShow}>Login</button>
       }
       return (
        <>
