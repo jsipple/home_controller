@@ -74,7 +74,7 @@ class App extends Component {
           <Route path='/profile' component={profileRoute} /> 
           <Route path='/createDepartment' component={createDepartmentRoute} />
           <Route exact path='/findItems/:searched' component={itemRoute}/>
-          <Route exact path='/findItems/:searched/:id' component={singleItemRoute}/>
+          <Route email={this.props.user.email} exact path='/findItems/:searched/:id' component={singleItemRoute}/>
           <Route email={this.props.user.email} path='/cart/:email' component={cartRoute}/>
           <Route email={this.props.user.email} path='/orderHistory/:email' component={orderHistoryRoute}/>
 

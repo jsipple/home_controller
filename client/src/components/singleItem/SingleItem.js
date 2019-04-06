@@ -34,7 +34,7 @@ class SingleItem extends Component {
     itemPrice: this.state.price,
     total: this.state.totalPrice,
     itemName: this.state.name,
-    email:'sarah@gmail.com',
+    email: this.props.email,
     description: this.state.description
   }
   console.log(cart)
