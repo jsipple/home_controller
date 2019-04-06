@@ -168,17 +168,27 @@ module.exports = function (db) {
       });
     },
 
+    deleteCart: (req, res) => {
+      let email= req.params.email;
+      db.Cart.destroy({
+        where: { email: email},
+      }).then((cart) => {
+        console.log(res.json(cart));
+      });
+    },
+
+
     addCart: (req, res) => {
       let cart= req.body;
       db.Cart.sync().then(() => {
         const newCart = {
-          departmentName: cart.departmentName,
           image: cart.image,
           itemName: cart.itemName,
           itemPrice: cart.itemPrice,
           quantity: cart.quantity,
           total: cart.total,
-          email: cart.email
+          email: cart.email,
+          itemDesc: cart.description
         }
         console.log(newCart+ "\n\n\n\n")
         return db.Cart.create(newCart).then(() => {
@@ -203,12 +213,8 @@ module.exports = function (db) {
       let order= req.body;
       db.OrderHistory.sync().then(() => {
         const newOrder = {
-          departmentName: order.departmentName,
           image: order.image,
           itemName: order.itemName,
-          itemPrice: order.itemPrice,
-          quantity: order.quantity,
-          total: order.total,
           email: order.email
         }
         console.log(newOrder+ "\n\n\n\n")

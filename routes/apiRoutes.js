@@ -25,6 +25,7 @@ module.exports = (passport, db) => {
   router.get('/department/:name', ensureAuthenticated, AppController.getItems)
   router.get('/department/:name/:id', ensureAuthenticated, AppController.getItem)
   router.get('/cart/:email', AppController.getCart)
+  router.delete('/cart/:email', AppController.deleteCart)
   router.post('/cart', AppController.addCart)
   router.get('/orderHistory/:email', AppController.getOrderHistory)
   router.post('/orderHistory', AppController.addOrderHistory)

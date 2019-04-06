@@ -10,12 +10,12 @@ import returnRoute from './routes/return'
 import profileRoute from './routes/profile'
 import singleItemRoute from './routes/singleItem'
 import createDepartmentRoute from './routes/createDepartment'
+import cartRoute from './routes/cart'
+import orderHistoryRoute from './routes/orderHistory'
 
 import axios from 'axios'
 import Navbar from './components/navbar/Navbar'
 
-import cartRoute from './routes/cartDisplay'
-import orderHistoryRoute from './routes/orderHistoryDisplay'
 
 
 class App extends Component {
@@ -73,7 +73,8 @@ class App extends Component {
 
           <Route path='/profile' component={profileRoute} /> 
           <Route path='/createDepartment' component={createDepartmentRoute} />
-          <Route path='/findItems/:searched' component={itemRoute}/>
+          <Route exact path='/findItems/:searched' component={itemRoute}/>
+          <Route exact path='/findItems/:searched/:id' component={singleItemRoute}/>
           <Route path= '/cart/:email' component={cartRoute}/>
           <Route path= '/orderHistory/:email' component={orderHistoryRoute}/>
 

@@ -1,6 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
     let Cart = sequelize.define('Cart', {
-        //departmentName: DataTypes.STRING,
         image: DataTypes.STRING,
         itemName: DataTypes.STRING,
         itemPrice: {     
@@ -15,14 +14,6 @@ module.exports = (sequelize, DataTypes) => {
         email: DataTypes.STRING,
         
     }, {timestamps: false});
-
-    // Cart.associate = (models) => {
-    //     Cart.belongsTo(models.User, {
-    //       foreignKey: {
-    //         allowNull: false
-    //       }
-    //     });
-    // };
 
     return Cart;
 };
