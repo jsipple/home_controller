@@ -188,7 +188,7 @@ module.exports = function (db) {
           quantity: cart.quantity,
           total: cart.total,
           email: cart.email,
-          itemDesc: cart.description
+          itemDesc: cart.description,
         }
         console.log(newCart+ "\n\n\n\n")
         return db.Cart.create(newCart).then(() => {

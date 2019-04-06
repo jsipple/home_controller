@@ -15,6 +15,7 @@ class Carts extends Component {
             item: [],
             image: [],
             id: [],
+            quantity: []
         }
     }
     componentDidMount = () => {
@@ -26,11 +27,15 @@ class Carts extends Component {
             let items = [];
             let images = [];
             let ids = [];
+            let quantity = []
+            let price = [];
             console.log(res.data)
             for (let i = 0; i < res.data.length; i++) {
                 items.push(res.data[i].itemName)
                 images.push(res.data[i].image)
                 ids.push(res.data[i].id)
+                quantity.push(res.data[i].quantity)
+                price.push(res.data[i].total)
             }
             // setState not working coming back
             this.setState({
@@ -38,6 +43,8 @@ class Carts extends Component {
                 item: items,
                 image: images,
                 id: ids,
+                quantity: quantity,
+                price: price
             })
         });
     }
@@ -45,11 +52,23 @@ class Carts extends Component {
 
     handleSubmit = (e)=> {
         e.preventDefault();
-        let email= this.props.email
+        let email= 'sippy@sip.com'
+        let itemName= [];
+        let image= [];
+        let quantity = [];
+        let total = [];
+        for (let i = 0; i < this.state.item.length; i++) {
+            itemName.push(this.state.item[i])
+            image.push(this.state.image[i])
+            quantity.push(this.state.quantity[i])
+            total.push(this.state.price[i])
+        }
         let order= {
-            itemName: this.state.item,
-            image: this.state.images,
-            email: email
+            itemName: itemName,
+            image: image,
+            email: email,
+            quantity: quantity,
+            total: total
         }
         axios.post('/api/orderHistory', order)
         .then(res=> {
@@ -58,14 +77,13 @@ class Carts extends Component {
             axios.delete('/api' + path)
             .then(res => {
                 console.log('you bought all of your orders!')
-                this.handleShow();
             });
         })
     }
 
     render() { 
         // need to import object from sql this should create
-        let items = this.state.item.map( (x,i) => <Row id='items' key={i} ><Col xs={3}><img className='itemImg' src={this.state.image[i]} /></Col><Col xs={8}><h1>{this.state.item[i]}</h1><br /></Col></Row>)
+        let items = this.state.item.map( (x,i) => <Row id='items' key={i} ><Col xs={3}><img className='itemImg' src={this.state.image[i]} /></Col><Col xs={8}><h1>{this.state.item[i]}</h1><p>Quantity: {this.state.quantity[i]}</p><br /><p>Total Cost: {this.state.price}</p></Col></Row>)
         
         return (
             <Fragment>

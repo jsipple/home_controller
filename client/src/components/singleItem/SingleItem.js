@@ -28,13 +28,14 @@ class SingleItem extends Component {
  handleClick = (e) => {
    e.preventDefault();
    console.log(this.state.name)
+   console.log(this.props.email)
    let cart = {
     image:this.state.image,
     quantity: this.state.quantity,
     itemPrice: this.state.price,
     total: this.state.totalPrice,
     itemName: this.state.name,
-    email: this.props.email,
+    email: 'sippy@sip.com',
     description: this.state.description
   }
   console.log(cart)

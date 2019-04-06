@@ -143,7 +143,7 @@ class Navbar extends Component {
         <Link className="nav-link" to="/tutorial">Getting started<span className="sr-only">(current)</span></Link>
       </li>
       <li className="nav-item active">
-        <Link className="nav-link" to={`/orderHistory/${this.state.email}`}>Order History<span className="sr-only">(current)</span></Link>
+        <Link className="nav-link" to={`/orderHistory/${this.props.user}`}>Order History<span className="sr-only">(current)</span></Link>
       </li>
           {adminButton}
     </ul>
@@ -153,7 +153,7 @@ class Navbar extends Component {
       <input onChange= {this.searchOnChange} className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
       <Link to= {this.state.url} className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</Link>
     </form>
-    <Link to= {`/cart/${this.state.email}`} className="cartBtn btn btn-outline-success my-2 my-sm-0" type="submit"><img className='cart' src={cartImg}></img></Link>
+    <Link to= {`/cart/${this.props.user}`} className="cartBtn btn btn-outline-success my-2 my-sm-0" type="submit"><img className='cart' src={cartImg}></img></Link>
   </div>
 </nav>
         )

@@ -22,22 +22,28 @@ class OrderHistory extends Component {
             // problem is not getting to here getting correct data though
             let items = [];
             let images = [];
+            let quantity = []
+            let price = [];
             console.log(res.data)
             for (let i = 0; i < res.data.length; i++) {
                 items.push(res.data[i].itemName)
                 images.push(res.data[i].image)
+                quantity.push(res.data[i].quantity)
+                price.push(res.data[i].total)
             }
             // setState not working coming back
             this.setState({
                 item: items,
                 image: images,
+                quantity: quantity,
+                price: price
             })
             console.log(this.state)
         });
     }
     render() { 
         // need to import object from sql this should create
-        let items = this.state.item.map( (x,i) => <Row id='items' key={i} ><Col xs={3}><img className='itemImg' src={this.state.image[i]} /></Col><Col xs={8}><h1>{this.state.item[i]}</h1><br /></Col></Row>)
+        let items = this.state.item.map( (x,i) => <Row id='items' key={i} ><Col xs={3}><img className='itemImg' src={this.state.image[i]} /></Col><Col xs={8}><h1>{this.state.item[i]}</h1><p>quantity: {this.state.quantity[i]}</p><br /><p>total: {this.state.price[i]}</p><br /></Col></Row>)
         
         return (
             <Fragment>

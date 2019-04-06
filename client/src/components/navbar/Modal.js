@@ -56,7 +56,7 @@ class Login extends Component {
      .then(res => {
       console.log(res.data)
       this.handleHide()
-      this.props.login(true, res.data.userName, res.data.isAdmin)
+      this.props.login(true, res.data.email, res.data.isAdmin)
       console.log(this.state)
      })
     }

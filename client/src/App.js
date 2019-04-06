@@ -57,7 +57,7 @@ class App extends Component {
     return (
       <div className="App">
         <BrowserRouter>
-        <Navbar admin={this.props.admin} />
+        <Navbar admin={this.props.admin} user={this.props.user} />
           <Route path='/home' component={homeRoute} />
           <Route path='/devices' component={devicesRoute} /> 
           <Route path='/tutorial' component={tutorialRoute} /> 
