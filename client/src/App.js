@@ -75,8 +75,8 @@ class App extends Component {
           <Route path='/createDepartment' component={createDepartmentRoute} />
           <Route exact path='/findItems/:searched' component={itemRoute}/>
           <Route exact path='/findItems/:searched/:id' component={singleItemRoute}/>
-          <Route path= '/cart/:email' component={cartRoute}/>
-          <Route path= '/orderHistory/:email' component={orderHistoryRoute}/>
+          <Route email={this.props.user.email} path='/cart/:email' component={cartRoute}/>
+          <Route email={this.props.user.email} path='/orderHistory/:email' component={orderHistoryRoute}/>
 
           {/* this will handle indvidual departments will need to have one with item after that */}
         </BrowserRouter>

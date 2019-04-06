@@ -45,11 +45,11 @@ class Carts extends Component {
 
     handleSubmit = (e)=> {
         e.preventDefault();
-        let email= window.location.pathname.split('/')
+        let email= this.props.email
         let order= {
             itemName: this.state.item,
             image: this.state.images,
-            email: email[2]
+            email: email
         }
         axios.post('/api/orderHistory', order)
         .then(res=> {
