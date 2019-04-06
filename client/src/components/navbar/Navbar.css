@@ -8,9 +8,9 @@ a {
     text-decoration: none;
 }
 #login {
-    color: #0000FF;
     cursor: pointer;  
-    margin: 10px;  
+    margin-bottom: 15px;  
+    margin-left: 10px;
 }
 a {
     color: black;

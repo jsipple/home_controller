@@ -3,9 +3,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import './Jumbotron.css'
 
 class Jumbotron extends Component {
-    constructor(props) {
-        super(props)
-    }
+
     render() {
         return (
             <Fragment>

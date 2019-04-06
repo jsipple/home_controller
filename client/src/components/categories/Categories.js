@@ -39,7 +39,7 @@ class Categories extends Component {
        }
         render() {
         // need to import object from sql this should create
-        let departments = this.state.departments.map( (x,i) => <section key={i} className='image'><Link to={`/department/${this.state.departments[i]}`}><img className='category' src={this.state.image[i]} /></Link><div className='caption'>{this.state.departments[i]}</div></section>)
+        let departments = this.state.departments.map( (x,i) => <section key={i} className='image'><Link to={`/department/${this.state.departments[i]}`}><img alt='error department not found' className='category' src={this.state.image[i]} /></Link><div className='caption'>{this.state.departments[i]}</div></section>)
         return (
             <Fragment>
                 <h1>Departments</h1>

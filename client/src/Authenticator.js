@@ -1,8 +1,6 @@
-import ReactDOM from 'react-dom';
-import React, { Fragment, Component } from 'react';
+import React, { Component } from 'react';
 import App from './App'
 import Register from './components/login/Register'
-import { Redirect } from 'react-router'
 
 class Authenticator extends Component {
  constructor(props) {
