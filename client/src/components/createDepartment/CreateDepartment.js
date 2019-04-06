@@ -32,6 +32,7 @@ class CreateDepartment extends Component {
  }
  handleChange = (e) => {
   e.preventDefault()
+  console.log(this.state)
   this.setState({
    [e.target.name]: e.target.value
   })
