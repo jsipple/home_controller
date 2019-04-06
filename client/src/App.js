@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import './App.css';
 import { BrowserRouter, Route } from 'react-router-dom'
 import homeRoute from './routes/Home'

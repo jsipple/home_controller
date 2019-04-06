@@ -1,7 +1,6 @@
 import React, { Component,Fragment } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import './Items.css'
-import axios from 'axios'
 
 class Returns extends Component {
     constructor(props) {

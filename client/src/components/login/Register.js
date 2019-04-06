@@ -1,4 +1,4 @@
-import React, { Component,Fragment } from 'react';
+import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import './Register.css'
 import axios from 'axios'
@@ -20,10 +20,16 @@ handleLoginMiddle = (one, two, three) => {
 
  handleSubmit = (e) => {
   e.preventDefault()
-
+  axios.post('http://localhost:5000/api/register', {
+    data: this.state
+  })
+   .then(res => {
+    console.log(res.data)
+    this.props.login({ isAuth: true, user: res.data })
+   })
+  }
   // this is not running on enter right now
-  // this is where i need to ping the server to check if true etc
- }
+  // this is where i need to ping the server to check if true et
  // this will allow you to run when pressing enter
  handleKeyPress = (e) => {
   if (e.key === 'Enter') {
@@ -36,7 +42,7 @@ handleLoginMiddle = (one, two, three) => {
     this.props.login({ isAuth: true, user: res.data })
    })
   }
- }
+}
  handleChange = (e) => {
   e.preventDefault()
   this.setState({
@@ -72,5 +78,4 @@ handleLoginMiddle = (one, two, three) => {
  )
  }
 }
-
 export default Register

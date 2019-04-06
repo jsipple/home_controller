@@ -78,7 +78,7 @@ class SingleItem extends Component {
     <Container>
     <Row>
        <Col xs={3} id='itemdesc'>
-       <img src={this.state.image} />
+       <img alt='item not found' src={this.state.image} />
        </Col>
        <Col xs={6 }>
      <section id='descrip'>
