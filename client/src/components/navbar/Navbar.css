@@ -19,8 +19,13 @@ a {
 .cart {
     height:100%;
     width:100%;
+    border: 2px solid lightgrey;
+    margin:0px
 }
 .cartBtn {
     margin-left: 2%;
     padding:0px;
+    height: 5%;
+    width: 5%;
+    border:none;
 }

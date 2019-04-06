@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import './Navbar.css'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+import cartImg from '../images/cart.png'
 
 class Navbar extends Component {
     constructor(props) {
@@ -153,7 +154,7 @@ class Navbar extends Component {
       <input onChange= {this.searchOnChange} className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
       <Link to= {this.state.url} className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</Link>
     </form>
-    <Link to= {`/cart/${this.state.email}`} className="cartBtn btn btn-outline-success my-2 my-sm-0" type="submit"><img className='cart' src='../images/cart.png'></img></Link>
+    <Link to= {`/cart/${this.state.email}`} className="cartBtn btn btn-outline-success my-2 my-sm-0" type="submit"><img className='cart' src={cartImg}></img></Link>
   </div>
 </nav>
         )
