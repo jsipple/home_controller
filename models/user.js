@@ -66,11 +66,11 @@ module.exports = function (sequelize, DataTypes) {
   //   });
   // };
 
-  User.associate = (models) => {
-    User.hasMany(models.OrderHistory, {
-      onDelete: "cascade"
-    });
-  };
+  // User.associate = (models) => {
+  //   User.hasMany(models.OrderHistory, {
+  //     onDelete: "cascade"
+  //   });
+  // };
 
 
   return User;

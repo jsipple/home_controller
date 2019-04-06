@@ -9,7 +9,8 @@ class Categories extends Component {
     constructor(props) {
         super(props)
         this.state ={
-            departments: []
+            departments: [],
+            image:[]
         }
     }
     // this not working

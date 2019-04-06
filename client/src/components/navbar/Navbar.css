@@ -16,3 +16,11 @@ a {
     color: black;
     text-decoration: none;
 }
+.cart {
+    height:100%;
+    width:100%;
+}
+.cartBtn {
+    margin-left: 2%;
+    padding:0px;
+}

@@ -25,17 +25,22 @@ class SingleItem extends Component {
   console.log(props.email)
  }
  // might want to check with Sarah not sure if she's done anything on the cart stuff yet
- handleClick = () => {
-  axios.post('/api/cart', {
+ handleClick = (e) => {
+   e.preventDefault();
+   console.log(this.state.name)
+   let cart = {
     image:this.state.image,
     quantity: this.state.quantity,
     itemPrice: this.state.price,
     total: this.state.totalPrice,
     itemName: this.state.name,
-    email:this.state.email,
-  })
+    email:'sarah@gmail.com',
+    description: this.state.description
+  }
+  console.log(cart)
+  axios.post('/api/cart', cart)
   .then(res => {
-    console.log(res.data)
+    console.log('successfully added'+res)
    //res.redirect('/')
   })
  }
@@ -56,7 +61,7 @@ class SingleItem extends Component {
   let path = window.location.pathname
    axios.get('/api' + path
    ).then(res => {
-    let result = res.data
+    let result = res.data[0]
     console.log(result)
     this.setState({
      image: result.image,
@@ -66,7 +71,8 @@ class SingleItem extends Component {
      seller: result.seller,
      id: result.id,
      totalPrice: result.itemPrice
-    })
+    });
+    console.log(this.state.name)
    })
  }
  render() {
