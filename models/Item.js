@@ -10,11 +10,11 @@ module.exports = (sequelize, DataTypes) => {
     ItemSales: DataTypes.INTEGER,
     metaphone: DataTypes.STRING
  });
-
+// this is what is causing the issue with heroku
   Items.associate = (models) => {
     Items.belongsTo(models.Departments, {
       foreignKey: {
-        allowNull: false
+        allowNull: true
       }
     });
   };
