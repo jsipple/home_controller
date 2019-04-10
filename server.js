@@ -43,13 +43,13 @@ app.use(helmet.hsts({
 }));
 
 // catch 404 and forward to error handler
-if (app.get('env') !== 'development') {
-  app.use((req, res, next) => {
-    let err = new Error('Not Found: ' + req.url);
-    err.status = 404;
-    next(err);
-  });
-}
+// if (app.get('env') !== 'development') {
+//   app.use((req, res, next) => {
+//     let err = new Error('Not Found: ' + req.url);
+//     err.status = 404;
+//     next(err);
+//   });
+// }
 
 db.sequelize.sync({ force: process.env.FORCE_SYNC === 'true' }).then(() => {
   if(process.env.FORCE_SYNC === 'true') {
