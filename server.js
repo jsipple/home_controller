@@ -9,6 +9,7 @@ const morgan = require('morgan');
 const passport = require('passport');
 const moment = require('moment');
 const helmet = require('helmet');
+const path = require('path');
 // need to have both of these running at once
 const PORT = process.env.PORT || 5000;
 const app = express();
