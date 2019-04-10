@@ -28,7 +28,7 @@ const db = require('./models');
 
 app.use(cookieParser());
 app.use(morgan('dev')); // Hook up the HTTP logger
-app.use(express.static('public'));
+// app.use(express.static('public'));
 
 require('./config/passport')(db, app, passport); // pass passport for configuration
 
@@ -56,12 +56,22 @@ db.sequelize.sync({ force: process.env.FORCE_SYNC === 'true' }).then(() => {
     require('./db/seed')(db);
   }
 
-  app.get('/api', (req,res) => {
-    db.User.findAll({}).then(result => {
-      res.json(result)
+  // app.get('/api', (req,res) => {
+  //   db.User.findAll({}).then(result => {
+  //     res.json(result)
+  //   })
+  // })
+  if (process.env.NODE_ENV === 'production') {
+    app.use(express.static('/client/build'))
+    app.get('/*', function(req, res) {
+      res.sendFile(path.join(__dirname, '/client/build/index.html'))
     })
-  })
-
+  } else {
+    app.use(express.static(path.join(__dirname, '/client/public')))
+    app.get('/*', function(req, res) {
+      res.sendFile(path.join(__dirname, '/client/public/index.html'))
+    })
+  }
   app.listen(PORT, () => {
     console.log(`Listening on port: ${PORT}`);
   });  
