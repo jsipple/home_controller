@@ -62,11 +62,10 @@ db.sequelize.sync({ force: process.env.FORCE_SYNC === 'true' }).then(() => {
   //     res.json(result)
   //   })
   // })
-  console.log('WHATS THE PATH ', path.join(__dirname, '/client/public/index.html'))
   if (process.env.NODE_ENV === 'production') {
-    app.use(express.static('/client/build'))
-    app.get('/*', function(req, res) {
-      res.sendFile(path.join(__dirname, '/client/build/index.html'))
+    app.use(express.static(path.join(__dirname, 'client', 'build')))
+    app.get('*', function(req, res) {
+      res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'))
     })
   } else {
     app.use(express.static(path.join(__dirname, '/client/public')))
