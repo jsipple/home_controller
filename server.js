@@ -9,6 +9,7 @@ const morgan = require('morgan');
 const passport = require('passport');
 const moment = require('moment');
 const helmet = require('helmet');
+const path = require('path');
 // need to have both of these running at once
 const PORT = process.env.PORT || 5000;
 const app = express();
@@ -28,7 +29,7 @@ const db = require('./models');
 
 app.use(cookieParser());
 app.use(morgan('dev')); // Hook up the HTTP logger
-app.use(express.static('public'));
+// app.use(express.static('public'));
 
 require('./config/passport')(db, app, passport); // pass passport for configuration
 
@@ -43,25 +44,35 @@ app.use(helmet.hsts({
 }));
 
 // catch 404 and forward to error handler
-if (app.get('env') !== 'development') {
-  app.use((req, res, next) => {
-    let err = new Error('Not Found: ' + req.url);
-    err.status = 404;
-    next(err);
-  });
-}
+// if (app.get('env') !== 'development') {
+//   app.use((req, res, next) => {
+//     let err = new Error('Not Found: ' + req.url);
+//     err.status = 404;
+//     next(err);
+//   });
+// }
 
 db.sequelize.sync({ force: process.env.FORCE_SYNC === 'true' }).then(() => {
   if(process.env.FORCE_SYNC === 'true') {
     require('./db/seed')(db);
   }
 
-  app.get('/api', (req,res) => {
-    db.User.findAll({}).then(result => {
-      res.json(result)
+  // app.get('/api', (req,res) => {
+  //   db.User.findAll({}).then(result => {
+  //     res.json(result)
+  //   })
+  // })
+  if (process.env.NODE_ENV === 'production') {
+    app.use(express.static(path.join(__dirname, 'client', 'build')))
+    app.get('*', function(req, res) {
+      res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'))
     })
-  })
-
+  } else {
+    app.use(express.static(path.join(__dirname, '/client/public')))
+    app.get('/*', function(req, res) {
+      res.sendFile(path.join(__dirname, '/client/public/index.html'))
+    })
+  }
   app.listen(PORT, () => {
     console.log(`Listening on port: ${PORT}`);
   });  
