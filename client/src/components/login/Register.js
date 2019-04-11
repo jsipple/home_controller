@@ -20,7 +20,7 @@ handleLoginMiddle = (one, two, three) => {
 
  handleSubmit = (e) => {
   e.preventDefault()
-  axios.post('http://localhost:5000/api/register', {
+  axios.post('/api/register', {
     data: this.state
   })
    .then(res => {
@@ -34,7 +34,7 @@ handleLoginMiddle = (one, two, three) => {
  handleKeyPress = (e) => {
   if (e.key === 'Enter') {
    console.log(this.state)
-   axios.post('http://localhost:5000/api/register', {
+   axios.post('/api/register', {
     data: this.state
   })
    .then(res => {

@@ -70,7 +70,6 @@ class App extends Component {
 
           <Route user={this.props.user} path='/profile' component={profileRoute} /> 
           {adminRoute}
-
           <Route path='/profile' component={profileRoute} /> 
           <Route exact path='/findItems/:searched' component={itemRoute}/>
           <Route email={this.props.user.email} exact path='/findItems/:searched/:id' component={singleItemRoute}/>
