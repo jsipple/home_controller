@@ -44,6 +44,7 @@ handleLoginMiddle = (one, two, three) => {
   }
 }
  handleChange = (e) => {
+   console.log(this.state)
   e.preventDefault()
   this.setState({
    [e.target.name]: e.target.value
