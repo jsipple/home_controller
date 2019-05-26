@@ -29,3 +29,6 @@ a {
     width: 5%;
     border:none;
 }
+.error {
+    color: red;
+}
