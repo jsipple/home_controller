@@ -35,7 +35,7 @@ class AddItem extends Component {
  }
  handleSubmit = (e) => {
   e.preventDefault()
-  axios.post('http://localhost:5000/api/items', {
+  axios.post('/api/items', {
      departmentName: this.state.departmentName,
      image: this.state.image,
      itemName: this.state.itemName,

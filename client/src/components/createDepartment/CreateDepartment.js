@@ -22,7 +22,7 @@ class CreateDepartment extends Component {
    console.log(this.state)
   if (e.key === 'Enter') {
    console.log(this.state)
-   axios.post('http://localhost:5000/api/departments', {
+   axios.post('/api/departments', {
     data: this.state
   })
    .then(res => {
