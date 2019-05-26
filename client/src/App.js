@@ -42,7 +42,6 @@ class App extends Component {
      show: false,
      isAuth: false
    })
-   // this.props.history.push('/home')
   })
    }
   // checkAuth
@@ -58,7 +57,7 @@ class App extends Component {
       <div className="App">
         <BrowserRouter>
         <Navbar admin={this.props.admin} user={this.props.user} />
-          <Route path='/home' component={homeRoute} />
+          <Route path='/' component={homeRoute} />
           <Route path='/devices' component={devicesRoute} /> 
           <Route path='/tutorial' component={tutorialRoute} /> 
           {/* this will be under profile and item as well */}

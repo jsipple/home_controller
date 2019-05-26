@@ -26,6 +26,7 @@ handleLoginMiddle = (one, two, three) => {
    .then(res => {
     console.log(res.data)
     this.props.login({ isAuth: true, user: res.data })
+
    })
   }
   // this is not running on enter right now

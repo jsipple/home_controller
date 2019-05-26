@@ -81,7 +81,6 @@ class Navbar extends Component {
        loggedIn: false,
        inAuth: false
      })
-     // this.props.history.push('/home')
     })
 
     };
@@ -113,7 +112,6 @@ class Navbar extends Component {
        isAuth: false,
        isAdmin: false
      })
-     // this.props.history.push('/home')
     //  location.reload()
     })
      }
@@ -129,7 +127,7 @@ class Navbar extends Component {
   <div className="collapse navbar-collapse" id="navbarSupportedContent">
     <ul className="navbar-nav mr-auto">
       <li className="nav-item active">
-        <Link className="nav-link" to="/home">Home<span className="sr-only">(current)</span></Link>
+        <Link className="nav-link" to="/">Home<span className="sr-only">(current)</span></Link>
       </li>
       <li className="nav-item active">
 

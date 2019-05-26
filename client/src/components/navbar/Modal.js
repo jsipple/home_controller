@@ -42,7 +42,8 @@ class Login extends Component {
            })
           this.handleHide()
   
-          this.props.handleLoginMiddle(true, res.data.userName, res.data.isAdmin)
+          this.props.login(true, res.data.userName, res.data.isAdmin)
+
          })
         }
        }
@@ -54,7 +55,7 @@ class Login extends Component {
      })
      .then(res => {
       this.handleHide()
-      this.props.handleLoginMiddle(true, res.data.email, res.data.isAdmin)
+      this.props.login(true, res.data.email, res.data.isAdmin)
      })
     }
 
