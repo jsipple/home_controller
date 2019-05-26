@@ -1,7 +1,8 @@
 # home_controller
 
-cd client
+to view app go to 
+https://home-controller42.herokuapp.com/home
 
-npm i
-
-npm run
+guest login
+email: guest@guest.com
+pw: guest

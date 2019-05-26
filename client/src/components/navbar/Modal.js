@@ -36,7 +36,6 @@ class Login extends Component {
            email: this.state.email
         })
          .then(res => {
-           console.log(res.data)
            this.setState({
              isAuth: true,
              isAdmin: res.data.isAdmin
@@ -54,10 +53,8 @@ class Login extends Component {
         email: this.state.email
      })
      .then(res => {
-      console.log(res.data)
       this.handleHide()
-      this.props.login(true, res.data.email, res.data.isAdmin)
-      console.log(this.state)
+      this.props.handleLoginMiddle(true, res.data.email, res.data.isAdmin)
      })
     }
 
