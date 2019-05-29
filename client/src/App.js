@@ -40,7 +40,8 @@ class App extends Component {
      email: '',
      password: '',
      show: false,
-     isAuth: false
+     isAuth: false,
+     isAdmin: true
    })
    // this.props.history.push('/home')
   })
