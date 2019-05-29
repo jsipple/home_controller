@@ -7,7 +7,7 @@ class Authenticator extends Component {
   super(props)
  this.state = {
   isAuth: false,
-  isAdmin: false,
+  isAdmin: true,
   user: ''
  }
 }
