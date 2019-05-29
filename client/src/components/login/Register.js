@@ -26,7 +26,6 @@ handleLoginMiddle = (one, two, three) => {
    .then(res => {
     console.log(res.data)
     this.props.login(true, this.state)
-
    })
   }
   // this is not running on enter right now
