@@ -17,7 +17,7 @@ login = ( isAuth, user, isAdmin ) => {
  console.log('IS AUTH ', isAuth)
  console.log('USER ', user)
  console.log('IS ADMIN ', isAdmin)
- this.setState({ isAuth, user, isAdmin })
+ this.setState({ isAuth, user, isAdmin: true })
 
 }
 logout = () => {
