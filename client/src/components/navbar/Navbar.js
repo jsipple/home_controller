@@ -81,7 +81,6 @@ class Navbar extends Component {
        loggedIn: false,
        inAuth: false
      })
-     // this.props.history.push('/home')
     })
 
     };
@@ -113,7 +112,6 @@ class Navbar extends Component {
        isAuth: false,
        isAdmin: false
      })
-     // this.props.history.push('/home')
     //  location.reload()
     })
      }
@@ -129,15 +127,12 @@ class Navbar extends Component {
   <div className="collapse navbar-collapse" id="navbarSupportedContent">
     <ul className="navbar-nav mr-auto">
       <li className="nav-item active">
-        <Link className="nav-link" to="/home">Home<span className="sr-only">(current)</span></Link>
+        <Link className="nav-link" to="/">Home<span className="sr-only">(current)</span></Link>
       </li>
       <li className="nav-item active">
 
         <Link className="nav-link" to="/department">store<span className="sr-only">(current)</span></Link>
 
-      </li>
-      <li className="nav-item active">
-        <a className="nav-link" href="https://home-controller12345.herokuapp.com">Manage your devices<span className="sr-only">(current)</span></a>
       </li>
       <li className="nav-item active">
         <Link className="nav-link" to="/tutorial">Getting started<span className="sr-only">(current)</span></Link>

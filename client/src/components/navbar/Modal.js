@@ -13,7 +13,8 @@ class Login extends Component {
          email: '',
          password: '',
          show: false,
-         loggedIn: false
+         loggedIn: false,
+         error: ''
        };
       }
        handleShow = () => {
@@ -42,7 +43,8 @@ class Login extends Component {
            })
           this.handleHide()
   
-          this.props.handleLoginMiddle(true, res.data.userName, res.data.isAdmin)
+          this.props.login(true, res.data.userName, res.data.isAdmin)
+
          })
         }
        }
@@ -53,8 +55,15 @@ class Login extends Component {
         email: this.state.email
      })
      .then(res => {
+       console.log(res)
+       if (res.data.loggin === true) {
       this.handleHide()
-      this.props.handleLoginMiddle(true, res.data.email, res.data.isAdmin)
+      this.props.login(true, res.data.email, res.data.isAdmin)
+       } else {
+         this.setState({
+           error: 'incorrect username or password'
+         })
+       }
      })
     }
 
@@ -80,11 +89,13 @@ class Login extends Component {
     <br />
     <input value={this.state.email} name='email' type='text' onChange={this.handleChange} onKeyPress={this.handleKeyPress} />
     <br />
+
           <label id='pass' htmlFor='password'>Password:</label>
-    <br />
+          <br />
     <input value={this.state.password} name='password' type='password' onChange={this.handleChange} onKeyPress={this.handleKeyPress} />
    <br />
            </form>
+           <p className='error'>{this.state.error}</p>
            </Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={this.handleHide}>
